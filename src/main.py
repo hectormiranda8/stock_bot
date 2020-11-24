@@ -27,17 +27,17 @@ webbrowser.register('chrome', None,
                     webbrowser.BackgroundBrowser("C://Program Files//Google//Chrome//Application//chrome.exe"))
 
 
-async def check_url(url):
+async def check_url_newegg_single(url):
     page = requests.get(url, headers=firefox_header)
     soup = BeautifulSoup(page.content, 'html.parser')
     # print(soup)
-    name = str(await newegg_name(soup))
+    name = str(newegg_name(soup))
     print("\nProduct: " + name)
-    instock = await newegg_instock(str(soup))
+    instock = newegg_instock(str(soup))
     if instock:
         text = colored("In stock: " + str(instock), 'green')
         print(text)
-        price = str(await newegg_price(soup))
+        price = str(newegg_price(soup))
         print("Price: " + price)
         avail_stock_firefox.append(url)
     else:
@@ -45,20 +45,20 @@ async def check_url(url):
         print(text)
 
 
-async def newegg_instock(soup):
+def newegg_instock(soup):
     display = "OUT OF STOCK"
     if soup.find(display) != -1:
         return False
     return True
 
 
-async def newegg_price(soup):
+def newegg_price(soup):
     unformat_price = str(soup.find(class_="list_price")).split(">")
     price = re.findall(r"[-+]?\d*\.\d+|\d+", unformat_price[1])
     return "$" + price[0]
 
 
-async def newegg_name(soup):
+def newegg_name(soup):
     unformat_name = str(soup.find(class_="name")).split(">")
     return unformat_name[1].split("<")[0]
 
@@ -66,19 +66,51 @@ async def newegg_name(soup):
 async def check_newegg():
     tasks = []
     for url in URL_NEWEGG:
-        tasks.append(asyncio.ensure_future(check_url(url)))
+        tasks.append(asyncio.ensure_future(check_url_newegg_single(url)))
     await asyncio.gather(*tasks)
 
 
-async def check_bestbuy():
+async def check_url_bestbuy(url):
+    page = requests.get(url, headers=chrome_header)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    # print(soup)
+    name = str(bestbuy_name(soup))
+    print("\nProduct: " + name)
+    instock = bestbuy_instock(str(soup))
+    if instock:
+        text = colored("In stock: " + str(instock), 'green')
+        print(text)
+        price = str(bestbuy_price(soup))
+        print("Price: " + price)
+        avail_stock_chrome.append(url)
+    else:
+        text = colored("In stock: " + str(instock), 'red')
+        print(text)
+
+def bestbuy_instock(soup):
     print()
 
 
+def bestbuy_price(soup):
+    print()
+
+
+def bestbuy_name(soup):
+    print()
+
+
+async def check_bestbuy():
+    tasks = []
+    for url in URL_BESTBUY:
+        tasks.append(asyncio.ensure_future(check_url_bestbuy(url)))
+    await asyncio.gather(*tasks)
+
+
 def add_urls():
-    file = open("../urls/urls_newegg.txt", "r")
-    for url in file:
-        if url.startswith("https"):
-            URL_NEWEGG.append(url)
+    # file = open("../urls/urls_newegg.txt", "r")
+    # for url in file:
+    #     if url.startswith("https"):
+    #         URL_NEWEGG.append(url)
     file = open("../urls/urls_bestbuy.txt", "r")
     for url in file:
         if url.startswith("https"):
@@ -91,7 +123,7 @@ def main():
         loop = asyncio.get_event_loop()
         start = time.time()
         try:
-            loop.run_until_complete(check_newegg())
+            #  loop.run_until_complete(check_newegg())
             loop.run_until_complete(check_bestbuy())
         finally:
             end = time.time() - start

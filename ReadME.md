@@ -8,9 +8,12 @@ Just keep an eye out and update the link for such item.
 
 * src folder
     * For now it only contains the main.py which has all the source code
-    for the bot to run.
+    for the bot to run. "_Why are the newegg links being opened on 
+    firefox and the bestbuy ones on chrome?_" Because firefox is being a
+    little baby with bestbuy, it gives login problems sometimes so might
+    as well directly launch it on a browser it works on.
     
-* urls
+* urls folder
     * As you can guess.. this is the url folder and the corresponding
     text files for the items in each website. Notice that there are two
     different ones for newegg, that's because the tracking method for
@@ -23,3 +26,12 @@ Latest Python version as of 11/24/2020, Python 3.9.0, was used to compile, I rec
 using the same version to omit any errors when trying to use it. I will
 (in the near future) provide a release version of the bot which will run
 in the command prompt. 
+
+## TODOs
+* Config file, to include:
+    * firefox/chrome installation path
+    * booleans for whether or not the browser should be opened when an item
+    is found in stock
+    * firefox/chrome user agent (just google "my user agent" and copy
+    paste the result into the field)
+* Make the links be looked upon concurrently for faster processing
