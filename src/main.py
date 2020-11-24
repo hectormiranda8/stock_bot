@@ -9,6 +9,7 @@ import time
 import webbrowser
 
 URL_NEWEGG = []
+URL_NEWEGG_COMBOS = []
 URL_BESTBUY = []
 
 firefox_header = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0'}
@@ -74,11 +75,11 @@ async def check_bestbuy():
 
 
 def add_urls():
-    file = open("urls_newegg.txt", "r")
+    file = open("../urls/urls_newegg.txt", "r")
     for url in file:
         if url.startswith("https"):
             URL_NEWEGG.append(url)
-    file = open("urls_bestbuy.txt", "r")
+    file = open("../urls/urls_bestbuy.txt", "r")
     for url in file:
         if url.startswith("https"):
             URL_BESTBUY.append(url)
