@@ -10,7 +10,6 @@ import webbrowser
 
 URL_NEWEGG = []
 URL_NEWEGG_COMBOS = []
-URL_BESTBUY = []
 
 firefox_header = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0'}
 chrome_header = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
@@ -45,6 +44,10 @@ async def check_url_newegg_single(url):
         print(text)
 
 
+async def check_url_newegg_combo(url):
+    print()
+
+
 def newegg_instock(soup):
     display = "OUT OF STOCK"
     if soup.find(display) != -1:
@@ -70,51 +73,11 @@ async def check_newegg():
     await asyncio.gather(*tasks)
 
 
-async def check_url_bestbuy(url):
-    page = requests.get(url, headers=chrome_header)
-    soup = BeautifulSoup(page.content, 'html.parser')
-    # print(soup)
-    name = str(bestbuy_name(soup))
-    print("\nProduct: " + name)
-    instock = bestbuy_instock(str(soup))
-    if instock:
-        text = colored("In stock: " + str(instock), 'green')
-        print(text)
-        price = str(bestbuy_price(soup))
-        print("Price: " + price)
-        avail_stock_chrome.append(url)
-    else:
-        text = colored("In stock: " + str(instock), 'red')
-        print(text)
-
-def bestbuy_instock(soup):
-    print()
-
-
-def bestbuy_price(soup):
-    print()
-
-
-def bestbuy_name(soup):
-    print()
-
-
-async def check_bestbuy():
-    tasks = []
-    for url in URL_BESTBUY:
-        tasks.append(asyncio.ensure_future(check_url_bestbuy(url)))
-    await asyncio.gather(*tasks)
-
-
 def add_urls():
-    # file = open("../urls/urls_newegg.txt", "r")
-    # for url in file:
-    #     if url.startswith("https"):
-    #         URL_NEWEGG.append(url)
-    file = open("../urls/urls_bestbuy.txt", "r")
+    file = open("../urls/urls_newegg.txt", "r")
     for url in file:
         if url.startswith("https"):
-            URL_BESTBUY.append(url)
+            URL_NEWEGG.append(url)
 
 
 def main():
@@ -123,8 +86,7 @@ def main():
         loop = asyncio.get_event_loop()
         start = time.time()
         try:
-            #  loop.run_until_complete(check_newegg())
-            loop.run_until_complete(check_bestbuy())
+            loop.run_until_complete(check_newegg())
         finally:
             end = time.time() - start
             print("\nTime to execute: %.4f" % end, "secs\n")
@@ -149,6 +111,9 @@ def main():
             print("Refreshing...\n")
 
 
+if __name__ == '__main__':
+    main()
+
 # async def myCoroutine(num):
 #     process_time = random.randint(1, 5)
 #     await asyncio.sleep(process_time)
@@ -160,11 +125,8 @@ def main():
 #     for i in range(10):
 #         tasks.append(asyncio.ensure_future(myCoroutine(i)))
 #     await asyncio.gather(*tasks)
-
-
-if __name__ == '__main__':
-    main()
-
+#
+#
 # loop = asyncio.get_event_loop()
 # start = time.time()
 # try:

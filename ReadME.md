@@ -2,21 +2,18 @@
 
 This stock bot is used to track whether or not an item is in stock. The
 items are taken from the text files which contains the links of each
-corresponding item. Newegg and BestBuy may occasionally remove the item
+corresponding item. Newegg may occasionally remove the item
 and add it back to prevent bots such as this one from tracking such item.
 Just keep an eye out and update the link for such item.
 
 * src folder
     * For now it only contains the main.py which has all the source code
-    for the bot to run. "_Why are the newegg links being opened on 
-    firefox and the bestbuy ones on chrome?_" Because firefox is being a
-    little baby with bestbuy, it gives login problems sometimes so might
-    as well directly launch it on a browser it works on.
+    for the bot to run. 
     
 * urls folder
     * As you can guess.. this is the url folder and the corresponding
-    text files for the items in each website. Notice that there are two
-    different ones for newegg, that's because the tracking method for
+    text files for the items in Newegg. Notice that there are two
+    different ones for Newegg, that's because the tracking method for
     an item that's sold in a single unit is different from the tracking
     method that's used for an item that's sold in a combo. As long as
     you put the _urls_ in the right place, the bot shouldn't have a
@@ -30,6 +27,7 @@ in the command prompt.
 ## TODOs
 * Config file, to include:
     * firefox/chrome installation path
+    * booleans to decide whether to open firefox, chrome or both
     * booleans for whether or not the browser should be opened when an item
     is found in stock
     * firefox/chrome user agent (just google "my user agent" and copy
