@@ -11,7 +11,7 @@ import webbrowser
 import winsound
 
 frequency = 2500
-duration = 1000
+duration = 500
 
 URL_NEWEGG = []
 URL_NEWEGG_COMBOS = []
@@ -44,6 +44,7 @@ async def check_url_newegg_single(url):
         price = str(newegg_price(soup))
         print("Price: " + price)
         avail_stock_firefox.append(url)
+        webbrowser.get('firefox').open(url)
     else:
         text = colored("In stock: " + str(instock), 'red')
         print(text)
@@ -61,6 +62,7 @@ async def check_url_newegg_combo(url):
         price = str(newegg_price_combo(soup))
         print("Price: " + price)
         avail_stock_firefox.append(url)
+        webbrowser.get('firefox').open(url)
     else:
         text = colored("In stock: " + str(instock), 'red')
         print(text)
@@ -105,6 +107,7 @@ def newegg_name_combo(soup):
     name = name[0][1:size-1]
     return name
 
+
 async def check_newegg():
     tasks = []
     for url in URL_NEWEGG:
@@ -112,6 +115,15 @@ async def check_newegg():
     for url in URL_NEWEGG_COMBOS:
         tasks.append(asyncio.ensure_future(check_url_newegg_combo(url)))
     await asyncio.gather(*tasks)
+
+
+def reset_bot():
+    global availability
+    global avail_stock_firefox
+    global avail_stock_chrome
+    avail_stock_firefox = []
+    avail_stock_chrome = []
+    availability = [avail_stock_firefox, avail_stock_chrome]
 
 
 def add_urls():
@@ -136,8 +148,8 @@ def main():
         finally:
             end = time.time() - start
             print("\nTime to execute: %.4f" % end, "secs\n")
-            for url in avail_stock_firefox:
-                webbrowser.get('firefox').open(url)
+            # for url in avail_stock_firefox:
+            #     webbrowser.get('firefox').open(url)
             # for url in avail_stock_chrome:
             #     webbrowser.get('chrome').open(url)
             close = False
@@ -149,16 +161,18 @@ def main():
                         print(stock)
                     close = True
             if close:
-                for i in range(1, 10):
+                for i in range(1, 4):
+                    winsound.Beep(frequency, duration)
                     winsound.Beep(frequency, duration)
                     time.sleep(2)
-            time_to_wait = random.randint(5, 10)
-            print("\nTime to refresh or close: " + str(time_to_wait) + " seconds")
-            time.sleep(time_to_wait)
+            # time_to_wait = random.randint(5, 10)
+            # print("\nTime to refresh or close: " + str(time_to_wait) + " seconds")
+            # time.sleep(time_to_wait)
             # close = True
-            if close:
-                print("Closing bot.")
-                sys.exit(0)
+            # if close:
+            #     print("Closing bot.")
+            #     sys.exit(0)
+            reset_bot()
             print("Refreshing...\n")
             clr_scr += 1
             if clr_scr == 3:

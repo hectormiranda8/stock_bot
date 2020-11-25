@@ -22,16 +22,16 @@ https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4191565&quicklink
 https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207525&quicklink=true
 
 # AMD R9 5900x
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199055
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207305
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207319
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190501
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4200047
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207515
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199038
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199051
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199829
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199039
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190499
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190507
-https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199099
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199055
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207305
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207319
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190501
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4200047
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207515
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199038
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199051
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199829
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199039
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190499
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190507
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4199099
