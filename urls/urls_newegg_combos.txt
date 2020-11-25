@@ -1,7 +1,12 @@
+# Testing IN STOCK  option
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190012
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4189414
+#https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4190010
+
 # RX 6800 XT
 
 
 # GeForce RTX 3080
-
+https://www.newegg.com/Product/ComboDealDetails?ItemList=Combo.4207521&quicklink=true
 
 # AMD R9 5900x
