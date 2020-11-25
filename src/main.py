@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from termcolor import colored
 import asyncio
+import os
 import random
 import re
 import requests
@@ -122,6 +123,7 @@ def add_urls():
 
 def main():
     add_urls()
+    clr_scr = 1
     while True:
         loop = asyncio.get_event_loop()
         start = time.time()
@@ -142,7 +144,7 @@ def main():
                     for stock in stock_list:
                         print(stock)
                     close = True
-            time_to_wait = random.randint(10, 30)
+            time_to_wait = random.randint(5, 10)
             print("\nTime to refresh or close: " + str(time_to_wait) + " seconds")
             time.sleep(time_to_wait)
             # close = True
@@ -150,6 +152,9 @@ def main():
                 print("Closing bot.")
                 sys.exit(0)
             print("Refreshing...\n")
+            clr_scr += 1
+            if clr_scr == 3:
+                clr_scr = 1
 
 
 if __name__ == '__main__':
