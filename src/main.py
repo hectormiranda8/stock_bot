@@ -76,16 +76,14 @@ def newegg_instock_combo(soup):
 
 
 def newegg_price(soup):
-    unformat_price = str(soup.find(class_="list_price")).split(">")
-    price = re.findall(r"[-+]?\d*\.\d+|\d+", unformat_price[1])
+    data = str(soup.find(class_="list_price")).split(">")
+    price = re.findall(r"[-+]?\d*\.\d+|\d+", data[1])
     return "$" + price[0]
 
 
 def newegg_price_combo(soup):
     data = str(soup.find(class_="current")).split("\n")
     price = re.findall(r"\d+\.\d+", data[0])
-    # print(data)
-    # print(price)
     return "$" + price[0]
 
 
@@ -100,7 +98,6 @@ def newegg_name_combo(soup):
     name = re.findall(r">.*<", line[0])
     size = len(name[0])
     name = name[0][1:size-1]
-    # print(name)
     return name
 
 async def check_newegg():
@@ -148,7 +145,7 @@ def main():
             time_to_wait = random.randint(10, 30)
             print("\nTime to refresh or close: " + str(time_to_wait) + " seconds")
             time.sleep(time_to_wait)
-            #close = True
+            # close = True
             if close:
                 print("Closing bot.")
                 sys.exit(0)
