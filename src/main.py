@@ -8,6 +8,10 @@ import requests
 import sys
 import time
 import webbrowser
+import winsound
+
+frequency = 2500
+duration = 1000
 
 URL_NEWEGG = []
 URL_NEWEGG_COMBOS = []
@@ -144,6 +148,10 @@ def main():
                     for stock in stock_list:
                         print(stock)
                     close = True
+            if close:
+                for i in range(1, 10):
+                    winsound.Beep(frequency, duration)
+                    time.sleep(2)
             time_to_wait = random.randint(5, 10)
             print("\nTime to refresh or close: " + str(time_to_wait) + " seconds")
             time.sleep(time_to_wait)
@@ -155,6 +163,7 @@ def main():
             clr_scr += 1
             if clr_scr == 3:
                 clr_scr = 1
+                os.system('cls')
 
 
 if __name__ == '__main__':
